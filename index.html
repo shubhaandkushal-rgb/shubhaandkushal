@@ -3,65 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shubha & Kushal Wedding</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <title>Shubha & Kushal | May 9, 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --cream: #FFF9F0;
+            --gold: #B8860B;
+            --dark-brown: #5D4037;
+            --soft-white: #FFFFFF;
+        }
+
+        * { scroll-behavior: smooth; box-sizing: border-box; }
+
         body {
-            background-color: #FFF9F0; /* Soft Cream */
-            color: #5D4037; /* Warm Brown */
+            background-color: var(--cream);
+            color: var(--dark-brown);
             font-family: 'Lato', sans-serif;
             margin: 0;
-            text-align: center;
-            padding: 20px;
+            padding: 0;
         }
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            border: 2px solid #D4AF37; /* Gold border */
-            padding: 40px;
-            background-color: #FFFFFF;
-            box-shadow: 0px 4px 15px rgba(0,0,0,0.05);
+
+        /* Navigation */
+        nav {
+            background: var(--soft-white);
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: center;
+            gap: 20px;
         }
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: #B8860B; /* Dark Gold */
-            margin-bottom: 10px;
-        }
-        .date {
+
+        nav a {
+            text-decoration: none;
+            color: var(--gold);
             font-weight: bold;
-            letter-spacing: 2px;
             text-transform: uppercase;
-            border-top: 1px solid #EEE;
-            border-bottom: 1px solid #EEE;
-            padding: 10px 0;
-            display: inline-block;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
         }
-        p { line-height: 1.6; font-size: 1.1rem; }
-        .venue { margin-top: 30px; font-style: italic; }
-        .footer { margin-top: 50px; font-size: 0.8rem; color: #999; }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 20px 60px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin: 10px 0;
+        }
+
+        .hero p { font-size: 1.2rem; font-style: italic; }
+
+        /* Content Sections */
+        .section {
+            max-width: 800px;
+            margin: 40px auto;
+            background: var(--soft-white);
+            padding: 40px;
+            border: 1px solid #E0D5C0;
+            border-radius: 4px;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            text-align: center;
+            border-bottom: 2px solid var(--cream);
+            padding-bottom: 10px;
+        }
+
+        /* Timeline Styling */
+        .timeline {
+            list-style: none;
+            padding: 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #F0F0F0;
+        }
+
+        .time { font-weight: bold; color: var(--gold); width: 100px; }
+        .event { flex: 1; text-align: left; padding-left: 20px; }
+
+        /* Privacy Policy Small Print */
+        .privacy-box {
+            font-size: 0.85rem;
+            color: #777;
+            text-align: left;
+            line-height: 1.5;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+            background: #F2EBE0;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2.5rem; }
+            .section { margin: 20px; padding: 20px; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <p>With the blessings of Almighty,</p>
+    <nav>
+        <a href="#details">Details</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#privacy">Privacy</a>
+    </nav>
+
+    <div class="hero">
+        <p>Together with their families</p>
         <h1>Shubha & Kushal</h1>
-        <p>Are getting married!</p>
-        
-        <div class="date">Saturday | May 9, 2026 | 6:00 PM</div>
+        <p>Invite you to celebrate their union</p>
+        <div style="margin-top: 20px; font-weight: bold; color: var(--gold);">MAY 9, 2026 • BENGALURU</div>
+    </div>
 
-        <div class="venue">
-            <p><strong>Reception Venue:</strong><br>
-            Gayatri Grand, Gate-4, Palace Ground<br>
-            Bengaluru, Karnataka</p>
+    <div id="details" class="section">
+        <h2>The Celebration</h2>
+        <p style="text-align: center;"><strong>Reception Venue:</strong><br>
+        Gayatri Grand, Gate-4<br>
+        Palace Ground, Bengaluru</p>
+        <p style="text-align: center; color: var(--gold);">
+            <a href="https://maps.google.com" target="_blank" style="color: var(--gold);">View on Google Maps</a>
+        </p>
+    </div>
+
+    <div id="schedule" class="section">
+        <h2>Event Schedule</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="time">6:00 PM</div>
+                <div class="event"><strong>Welcoming of Guests</strong><br>Reception starts at the main hall.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">7:30 PM</div>
+                <div class="event"><strong>Stage Formalities</strong><br>Introduction of the couple and family.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="time">8:30 PM</div>
+                <div class="event"><strong>Dinner Service</strong><br>Traditional grand feast served at the dining area.</div>
+            </div>
         </div>
+    </div>
 
-        <p>We look forward to celebrating this special day with you.</p>
+    <div id="privacy" class="section">
+        <h2>Privacy Policy</h2>
+        <div class="privacy-box">
+            <p>This website is used solely for the purpose of communicating event details for the wedding of Shubha and Kushal. We value your privacy:</p>
+            <ul>
+                <li><strong>Data Collection:</strong> We do not track personal cookies or sell guest data. Any RSVP information provided via WhatsApp is used only for headcount and hospitality purposes.</li>
+                <li><strong>WhatsApp Communication:</strong> By interacting with our automated RSVP bot, you consent to receive event-related updates (location, timing, reminders) on your registered number.</li>
+                <li><strong>Third-Party:</strong> We use Meta's Business API via Wati.io for communication. Their respective privacy policies apply to data transmission.</li>
+            </ul>
+        </div>
     </div>
 
     <div class="footer">
-        © 2026 Shubha & Kushal Wedding Events
+        © 2026 Shubha & Kushal Wedding Committee<br>
+        Built for "The Wedding Project"
     </div>
 
 </body>
