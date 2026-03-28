@@ -4,177 +4,533 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shubha & Kushal | May 9, 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --cream: #FFF9F0;
-            --gold: #B8860B;
-            --dark-brown: #5D4037;
-            --soft-white: #FFFFFF;
+            --cream: #FBF6EE;
+            --gold: #C9A84C;
+            --gold-light: #E8D5A3;
+            --dark: #3A2E28;
+            --brown: #7D5A3C;
+            --white: #FFFFFF;
+            --border: rgba(201,168,76,0.3);
         }
 
-        * { scroll-behavior: smooth; box-sizing: border-box; }
+        * { scroll-behavior: smooth; box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             background-color: var(--cream);
-            color: var(--dark-brown);
-            font-family: 'Lato', sans-serif;
-            margin: 0;
-            padding: 0;
+            color: var(--dark);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
         }
 
-        /* Navigation */
+        /* ── NAV ── */
         nav {
-            background: var(--soft-white);
-            padding: 15px;
+            background: rgba(251,246,238,0.95);
+            backdrop-filter: blur(8px);
+            padding: 18px 40px;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             display: flex;
-            justify-content: center;
-            gap: 20px;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
         }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+            font-style: italic;
+        }
+
+        .nav-links { display: flex; gap: 32px; }
 
         nav a {
             text-decoration: none;
-            color: var(--gold);
-            font-weight: bold;
+            color: var(--brown);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 2.5px;
             text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
+            transition: color 0.3s;
         }
 
-        /* Hero Section */
+        nav a:hover { color: var(--gold); }
+
+        /* ── HERO ── */
         .hero {
-            padding: 120px 20px 60px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
+            padding: 100px 20px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(201,168,76,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 50%, rgba(201,168,76,0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-ornament {
+            font-size: 1.5rem;
+            color: var(--gold);
+            letter-spacing: 8px;
+            margin-bottom: 20px;
+            opacity: 0.7;
+        }
+
+        .hero-tag {
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--brown);
+            margin-bottom: 16px;
         }
 
         .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            color: var(--gold);
-            margin: 10px 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3.5rem, 10vw, 7rem);
+            font-weight: 300;
+            color: var(--dark);
+            line-height: 1.05;
+            letter-spacing: -1px;
         }
 
-        .hero p { font-size: 1.2rem; font-style: italic; }
+        .hero h1 span { color: var(--gold); font-style: italic; }
 
-        /* Content Sections */
+        .hero-divider {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 28px 0;
+        }
+
+        .hero-divider::before,
+        .hero-divider::after {
+            content: '';
+            flex: 1;
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold));
+        }
+
+        .hero-divider::after {
+            background: linear-gradient(to left, transparent, var(--gold));
+        }
+
+        .hero-divider span {
+            color: var(--gold);
+            font-size: 1.1rem;
+        }
+
+        .hero-date {
+            font-size: 0.75rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--brown);
+            margin-bottom: 48px;
+        }
+
+        /* ── COUNTDOWN ── */
+        .countdown {
+            display: flex;
+            gap: 32px;
+            margin-top: 10px;
+        }
+
+        .countdown-unit {
+            text-align: center;
+        }
+
+        .countdown-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1;
+            display: block;
+        }
+
+        .countdown-label {
+            font-size: 0.6rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--brown);
+            margin-top: 6px;
+            display: block;
+        }
+
+        .countdown-sep {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--gold-light);
+            align-self: flex-start;
+            margin-top: 4px;
+        }
+
+        /* ── DECORATIVE BORDER ── */
+        .ornament-border {
+            width: 100%;
+            max-width: 600px;
+            margin: 60px auto 0;
+            text-align: center;
+            color: var(--gold);
+            font-size: 0.9rem;
+            letter-spacing: 6px;
+            opacity: 0.5;
+        }
+
+        /* ── SECTIONS ── */
         .section {
-            max-width: 800px;
-            margin: 40px auto;
-            background: var(--soft-white);
-            padding: 40px;
-            border: 1px solid #E0D5C0;
-            border-radius: 4px;
+            max-width: 760px;
+            margin: 0 auto 60px;
+            padding: 0 24px;
+        }
+
+        .section-inner {
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 52px 60px;
+            position: relative;
+        }
+
+        .section-inner::before,
+        .section-inner::after {
+            content: '◆';
+            position: absolute;
+            color: var(--gold);
+            font-size: 0.5rem;
+            opacity: 0.6;
+        }
+
+        .section-inner::before { top: -5px; left: 50%; transform: translateX(-50%); }
+        .section-inner::after  { bottom: -5px; left: 50%; transform: translateX(-50%); }
+
+        .section-eyebrow {
+            text-align: center;
+            font-size: 0.6rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 12px;
         }
 
         h2 {
-            font-family: 'Playfair Display', serif;
-            color: var(--gold);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.4rem;
+            font-weight: 300;
+            color: var(--dark);
             text-align: center;
-            border-bottom: 2px solid var(--cream);
-            padding-bottom: 10px;
+            margin-bottom: 36px;
         }
 
-        /* Timeline Styling */
-        .timeline {
-            list-style: none;
-            padding: 0;
+        /* ── VENUE ── */
+        .venue-block {
+            text-align: center;
+            line-height: 2;
         }
+
+        .venue-block strong {
+            display: block;
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .venue-block p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            color: var(--dark);
+            line-height: 1.7;
+        }
+
+        .map-link {
+            display: inline-block;
+            margin-top: 24px;
+            padding: 10px 32px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        .map-link:hover {
+            background: var(--gold);
+            color: var(--white);
+        }
+
+        /* ── TIMELINE ── */
+        .timeline { list-style: none; padding: 0; }
 
         .timeline-item {
+            display: grid;
+            grid-template-columns: 90px 1px 1fr;
+            gap: 0 24px;
+            padding: 20px 0;
+        }
+
+        .timeline-item:not(:last-child) .timeline-line {
+            background: linear-gradient(to bottom, var(--gold-light), transparent);
+        }
+
+        .time {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: var(--gold);
+            text-align: right;
+            padding-top: 2px;
+        }
+
+        .timeline-dot-wrapper {
             display: flex;
-            justify-content: space-between;
-            padding: 15px 0;
-            border-bottom: 1px solid #F0F0F0;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .time { font-weight: bold; color: var(--gold); width: 100px; }
-        .event { flex: 1; text-align: left; padding-left: 20px; }
+        .timeline-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--gold);
+            flex-shrink: 0;
+            margin-top: 6px;
+        }
 
-        /* Privacy Policy Small Print */
-        .privacy-box {
+        .timeline-line {
+            flex: 1;
+            width: 1px;
+            background: var(--border);
+            margin-top: 4px;
+        }
+
+        .event-title {
+            font-weight: 500;
             font-size: 0.85rem;
-            color: #777;
-            text-align: left;
-            line-height: 1.5;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+            color: var(--dark);
         }
 
+        .event-desc {
+            font-size: 0.82rem;
+            color: var(--brown);
+            line-height: 1.6;
+        }
+
+        /* ── PRIVACY ── */
+        .privacy-box {
+            font-size: 0.8rem;
+            color: var(--brown);
+            line-height: 1.9;
+        }
+
+        .privacy-box p { margin-bottom: 14px; }
+
+        .privacy-box ul {
+            padding-left: 20px;
+        }
+
+        .privacy-box li { margin-bottom: 10px; }
+
+        .privacy-box strong { color: var(--dark); font-weight: 500; }
+
+        /* ── FOOTER ── */
         .footer {
             text-align: center;
-            padding: 40px;
-            font-size: 0.9rem;
-            background: #F2EBE0;
+            padding: 48px 20px;
+            background: var(--dark);
+            color: rgba(255,255,255,0.4);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
         }
 
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 2.5rem; }
-            .section { margin: 20px; padding: 20px; }
+        .footer-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            color: var(--gold);
+            font-style: italic;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 640px) {
+            nav { padding: 14px 20px; }
+            .nav-logo { font-size: 1rem; }
+            nav a { font-size: 0.6rem; letter-spacing: 1.5px; }
+            .nav-links { gap: 18px; }
+            .section-inner { padding: 36px 24px; }
+            .countdown { gap: 20px; }
+            .countdown-num { font-size: 2rem; }
+            h2 { font-size: 1.9rem; }
+            .timeline-item { grid-template-columns: 72px 1px 1fr; gap: 0 16px; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="#details">Details</a>
-        <a href="#schedule">Schedule</a>
-        <a href="#privacy">Privacy</a>
+        <div class="nav-logo">S & K</div>
+        <div class="nav-links">
+            <a href="#details">Venue</a>
+            <a href="#schedule">Schedule</a>
+            <a href="#privacy">Privacy</a>
+        </div>
     </nav>
 
+    <!-- HERO -->
     <div class="hero">
-        <p>Together with their families</p>
-        <h1>Shubha & Kushal</h1>
-        <p>Invite you to celebrate their union</p>
-        <div style="margin-top: 20px; font-weight: bold; color: var(--gold);">MAY 9, 2026 • BENGALURU</div>
+        <div class="hero-ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+        <div class="hero-tag">Together with their families</div>
+        <h1><span>Shubha</span><br>&amp;<br><span>Kushal</span></h1>
+        <div class="hero-divider"><span>♦</span></div>
+        <div class="hero-date">Saturday · 9th May 2026 · Bengaluru</div>
+        <div class="countdown" id="countdown">
+            <div class="countdown-unit">
+                <span class="countdown-num" id="days">--</span>
+                <span class="countdown-label">Days</span>
+            </div>
+            <div class="countdown-sep">:</div>
+            <div class="countdown-unit">
+                <span class="countdown-num" id="hours">--</span>
+                <span class="countdown-label">Hours</span>
+            </div>
+            <div class="countdown-sep">:</div>
+            <div class="countdown-unit">
+                <span class="countdown-num" id="minutes">--</span>
+                <span class="countdown-label">Minutes</span>
+            </div>
+            <div class="countdown-sep">:</div>
+            <div class="countdown-unit">
+                <span class="countdown-num" id="seconds">--</span>
+                <span class="countdown-label">Seconds</span>
+            </div>
+        </div>
     </div>
 
+    <!-- VENUE -->
     <div id="details" class="section">
-        <h2>The Celebration</h2>
-        <p style="text-align: center;"><strong>Reception Venue:</strong><br>
-        Gayatri Grand, Gate-4<br>
-        Palace Ground, Bengaluru</p>
-        <p style="text-align: center; color: var(--gold);">
-            <a href="https://maps.google.com" target="_blank" style="color: var(--gold);">View on Google Maps</a>
-        </p>
+        <div class="section-inner">
+            <div class="section-eyebrow">The Celebration</div>
+            <h2>Venue &amp; Details</h2>
+            <div class="venue-block">
+                <strong>Reception Venue</strong>
+                <p>Gayatri Grand, Gate-4<br>Palace Grounds, Bengaluru</p>
+                <a href="https://maps.google.com/?q=Gayatri+Grand+Palace+Grounds+Bengaluru" target="_blank" class="map-link">View on Google Maps</a>
+            </div>
+        </div>
     </div>
 
+    <!-- SCHEDULE -->
     <div id="schedule" class="section">
-        <h2>Event Schedule</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="time">6:00 PM</div>
-                <div class="event"><strong>Welcoming of Guests</strong><br>Reception starts at the main hall.</div>
-            </div>
-            <div class="timeline-item">
-                <div class="time">7:30 PM</div>
-                <div class="event"><strong>Stage Formalities</strong><br>Introduction of the couple and family.</div>
-            </div>
-            <div class="timeline-item">
-                <div class="time">8:30 PM</div>
-                <div class="event"><strong>Dinner Service</strong><br>Traditional grand feast served at the dining area.</div>
+        <div class="section-inner">
+            <div class="section-eyebrow">Plan Your Evening</div>
+            <h2>Event Schedule</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time">6:00 PM</div>
+                    <div class="timeline-dot-wrapper">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-line"></div>
+                    </div>
+                    <div class="event">
+                        <div class="event-title">Welcoming of Guests</div>
+                        <div class="event-desc">Reception begins at the main hall. Please arrive early to find your seating.</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">7:30 PM</div>
+                    <div class="timeline-dot-wrapper">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-line"></div>
+                    </div>
+                    <div class="event">
+                        <div class="event-title">Stage Formalities</div>
+                        <div class="event-desc">Introduction of the couple, family felicitations, and photo opportunities.</div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">8:30 PM</div>
+                    <div class="timeline-dot-wrapper">
+                        <div class="timeline-dot"></div>
+                    </div>
+                    <div class="event">
+                        <div class="event-title">Dinner Service</div>
+                        <div class="event-desc">A traditional grand feast served at the dining area. We hope you enjoy every bite.</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- PRIVACY -->
     <div id="privacy" class="section">
-        <h2>Privacy Policy</h2>
-        <div class="privacy-box">
-            <p>This website is used solely for the purpose of communicating event details for the wedding of Shubha and Kushal. We value your privacy:</p>
-            <ul>
-                <li><strong>Data Collection:</strong> We do not track personal cookies or sell guest data. Any RSVP information provided via WhatsApp is used only for headcount and hospitality purposes.</li>
-                <li><strong>WhatsApp Communication:</strong> By interacting with our automated RSVP bot, you consent to receive event-related updates (location, timing, reminders) on your registered number.</li>
-                <li><strong>Third-Party:</strong> We use Meta's Business API via Wati.io for communication. Their respective privacy policies apply to data transmission.</li>
-            </ul>
+        <div class="section-inner">
+            <div class="section-eyebrow">Your Data</div>
+            <h2>Privacy Policy</h2>
+            <div class="privacy-box">
+                <p>This website is used solely to communicate event details for the wedding of Shubha and Kushal. We value your privacy.</p>
+                <ul>
+                    <li><strong>Data Collection:</strong> We do not track personal cookies or sell guest data. Any RSVP information provided via WhatsApp is used only for headcount and hospitality purposes.</li>
+                    <li><strong>WhatsApp Communication:</strong> By interacting with our automated RSVP bot, you consent to receive event-related updates (location, timing, reminders) on your registered number.</li>
+                    <li><strong>Third-Party:</strong> We use Meta's Business API via Wati.io for communication. Their respective privacy policies apply to data transmission.</li>
+                </ul>
+            </div>
         </div>
     </div>
 
+    <!-- FOOTER -->
     <div class="footer">
-        © 2026 Shubha & Kushal Wedding Committee<br>
-        Built for "The Wedding Project"
+        <span class="footer-name">Shubha &amp; Kushal</span>
+        May 9, 2026 &nbsp;·&nbsp; Bengaluru &nbsp;·&nbsp; © 2026 Wedding Committee
     </div>
+
+    <script>
+        const weddingDate = new Date('2026-05-09T18:00:00+05:30');
+
+        function updateCountdown() {
+            const now = new Date();
+            const diff = weddingDate - now;
+
+            if (diff <= 0) {
+                document.getElementById('countdown').innerHTML =
+                    '<div style="font-family:\'Cormorant Garamond\',serif;font-size:1.5rem;color:var(--gold);letter-spacing:4px;">Today is the Day! ♦</div>';
+                return;
+            }
+
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent    = String(d).padStart(2, '0');
+            document.getElementById('hours').textContent   = String(h).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(m).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(s).padStart(2, '0');
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
 
 </body>
 </html>
